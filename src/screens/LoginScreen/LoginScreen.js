@@ -47,7 +47,7 @@ export default class LoginScreen extends Component {
         onPress={() =>
           buttonText === "LOGIN"
             ? this._processAuthentication(null)
-            : console.log("sign up")
+            : this._sendToRegistrationScreen()
         }
         underlayColor="gray"
       >
@@ -88,6 +88,11 @@ export default class LoginScreen extends Component {
   _processAuthentication = userCredentials => {
     const testObject = { person: "alex" };
     this.props.navigation.navigate("BusinessHomeScreen", testObject);
+  };
+
+  _sendToRegistrationScreen = () => {
+    const testObject = { person: "new user" };
+    this.props.navigation.navigate("Registration", testObject);
   };
 
   //Reset Password link
