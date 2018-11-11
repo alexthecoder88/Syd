@@ -19,8 +19,49 @@ export default class BusinessRegistrationScreenStyles {
       container: {
         flex: 1,
         alignItems: "center",
-        justifyContent: "center",
         backgroundColor: "#c1c6e4"
+      },
+      scrollableContainer: {
+        alignItems: "center"
+      },
+      titleContainer: {
+        marginTop: 50,
+        color: "white",
+        fontSize: scaledTitleContainerFontSize,
+        marginBottom: 50,
+        fontWeight: "bold"
+      },
+      inputContainer: {
+        borderBottomColor: "#F5FCFF",
+        backgroundColor: "#FFFFFF",
+        borderRadius: 10,
+        borderBottomWidth: 1,
+        width: 275,
+        height: 45,
+        marginBottom: 20,
+        flexDirection: "row",
+        alignItems: "center"
+      },
+      buttonContainer: {
+        height: 28,
+        flexDirection: "row",
+        justifyContent: "center",
+        alignItems: "center",
+        width: 135,
+        borderRadius: 30,
+        backgroundColor: "gray",
+        marginBottom: 10
+      },
+      buttonsRowContainer: {
+        flex: 1,
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "center"
+      },
+      buttonText: {
+        color: "white",
+        fontSize: scaledLoginAndSignUpTextFontSize,
+        fontWeight: "bold"
       }
     });
     return styles;

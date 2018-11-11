@@ -10,11 +10,13 @@ import {
   Alert,
   Dimensions
 } from "react-native";
-import CustomerScreenStyles from "./CustomerScreenStyles";
+import CustomerRegistrationScreenStyles from "./CustomerRegistrationScreenStyles";
 export default class CustomerRegistrationScreen extends Component {
   constructor(props) {
     super(props);
-    this.styles = new CustomerScreenStyles(this._getScreenDimensions());
+    this.styles = new CustomerRegistrationScreenStyles(
+      this._getScreenDimensions()
+    );
   }
 
   //Retrieve phone dimensions(width and height)
@@ -22,7 +24,7 @@ export default class CustomerRegistrationScreen extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
+      <View style={this.styles.getStyles().container}>
         <Text>
           Welcome to the CustomerRegistrationScreen!!!!!!!!!!!!!!!!!!!!!!
           !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!

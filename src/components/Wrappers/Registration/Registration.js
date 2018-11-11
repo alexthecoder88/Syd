@@ -6,15 +6,24 @@ import {
   createDrawerNavigator,
   NavigationActions
 } from "react-navigation";
-import BusinessRegistrationScreen from "../../screens/BusinessRegistrationScreen/BusinessRegistrationScreen";
-import CustomerRegistrationScreen from "../../../screens/CustomerRegistrationScreen/CustomerRegistrationScreen";
+import BusinessRegistrationScreen from "../../../screens/Business/BusinessRegistrationScreen/BusinessRegistrationScreen";
+import CustomerRegistrationScreen from "../../../screens/Customer/CustomerRegistrationScreen/CustomerRegistrationScreen";
 export default class Registration extends React.Component {
   constructor(props) {
     super(props);
+
+    //For Testing
+    this.business = true;
   }
 
   render() {
-    console.log("rending app !!!!!");
-    return <BusinessRegistrationScreen />;
+    console.log("registration !!! !!!!!");
+    console.log("props:" + this.props);
+    console.log("is it business:" + this.business);
+    return this.business == true ? (
+      <BusinessRegistrationScreen data={this.props} />
+    ) : (
+      <CustomerRegistrationScreen />
+    );
   }
 }

@@ -19,7 +19,7 @@ export default class CustomerRegistrationScreenStyles {
       container: {
         flex: 1,
         alignItems: "center",
-        backgroundColor: "#c1c6e4"
+        backgroundColor: "purple"
       }
     });
     return styles;
