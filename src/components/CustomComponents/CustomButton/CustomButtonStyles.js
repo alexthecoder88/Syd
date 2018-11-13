@@ -7,7 +7,6 @@ export default class CustomButtonStyles {
     this.height = screenDimensions.height;
     this.scaleValue = 0.15;
 
-    console.log("in LoginScreenStyles constructor=======");
     console.log("width is===>" + this.width);
     console.log("height=====>" + this.height);
   }

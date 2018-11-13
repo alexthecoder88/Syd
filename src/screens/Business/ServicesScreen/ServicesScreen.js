@@ -19,6 +19,7 @@ import {
   LocaleConfig
 } from "react-native-calendars";
 import CustomButtonBuilder from "../../../components/CustomComponents/CustomButton/CustomButton";
+import CustomTextInputBuilder from "../../../components/CustomComponents/CustomTextInputField/CustomTextInputField";
 export default class ServicesScreen extends Component {
   static navigationOptions = {
     drawerLabel: "Services",
@@ -35,12 +36,24 @@ export default class ServicesScreen extends Component {
   }
 
   //For testing
-  createCustomButton() {
-    return new CustomButtonBuilder("TEST").createCustomButton();
+  createCustomButton(buttonText) {
+    return new CustomButtonBuilder(buttonText).createCustomButton();
   }
 
+  //For testing
+  createCustomTextInput(placeholderTxt) {
+    return new CustomTextInputBuilder(placeholderTxt).createCustomTextInput();
+  }
+
+  createService;
+
   render() {
-    return <View style={styles.container}>{this.createCustomButton()}</View>;
+    return (
+      <View style={styles.container}>
+        {this.createCustomButton("BOB")}
+        {this.createCustomTextInput("BOB2")}
+      </View>
+    );
   }
 }
 
