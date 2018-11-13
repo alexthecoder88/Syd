@@ -11,16 +11,12 @@ import CustomerRegistrationScreen from "../../../screens/Customer/CustomerRegist
 export default class Registration extends React.Component {
   constructor(props) {
     super(props);
-
-    //For Testing
-    this.business = true;
+    this.clientType = null;
   }
 
   render() {
-    console.log("registration !!! !!!!!");
-    console.log("props:" + this.props);
-    console.log("is it business:" + this.business);
-    return this.business == true ? (
+    this.clientType = this.props.navigation.state.params.clientType;
+    return this.clientType == "Business" ? (
       <BusinessRegistrationScreen data={this.props} />
     ) : (
       <CustomerRegistrationScreen />

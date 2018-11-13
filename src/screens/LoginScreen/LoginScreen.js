@@ -22,10 +22,16 @@ export default class LoginScreen extends Component {
       email: "",
       password: ""
     };
+
+    //Login screen styles
     this.styles = new LoginScreenStyles(this._getScreenDimensions());
-    this.radio_props = [
+
+    //Either customer or business.Depends wich radio button is selected.Default is business
+    this.clientType = "Business";
+
+    this.clientTypeRadioProps = [
       { label: "Business", value: 0 },
-      { label: "Customer", value: 0 }
+      { label: "Customer", value: 1 }
     ];
   }
 
@@ -74,16 +80,21 @@ export default class LoginScreen extends Component {
     return (
       <View style={radioButtonStyles}>
         <RadioForm
-          radio_props={this.radio_props}
+          radio_props={this.clientTypeRadioProps}
           initial={0}
           radioStyle={{ paddingRight: 20 }}
           selectedButtonColor="white"
           buttonColor="gray"
-          onPress={value => console.log("Radion buttons clicked !!!!!!")}
+          onPress={value => this._setClientType(value)}
         />
       </View>
     );
   }
+
+  _setClientType = value => {
+    this.clientType = value == 0 ? "Business" : "Customer";
+    console.log("client type is: " + this.clientType);
+  };
 
   _processAuthentication = userCredentials => {
     const testObject = { person: "alex" };
@@ -91,8 +102,8 @@ export default class LoginScreen extends Component {
   };
 
   _sendToRegistrationScreen = () => {
-    const testObject = { person: "new user" };
-    this.props.navigation.navigate("Registration", testObject);
+    const clientType = { clientType: this.clientType };
+    this.props.navigation.navigate("Registration", clientType);
   };
 
   //Reset Password link
@@ -113,6 +124,7 @@ export default class LoginScreen extends Component {
   };
 
   render() {
+    console.log("rendering screen!!!!!");
     const loginAndSignUpButtonContainerStyles = this.styles.getStyles()
       .loginAndSignUpButtonContainer;
     return (

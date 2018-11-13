@@ -19,7 +19,6 @@ export default class BusinessRegistrationScreen extends Component {
     this.styles = new BusinessRegistrationScreenStyles(
       this._getScreenDimensions()
     );
-    debugger;
   }
 
   //Retrieve phone dimensions(width and height)
