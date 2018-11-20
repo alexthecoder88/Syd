@@ -87,7 +87,7 @@ export default class CustomButtonStyles {
         borderRadius: 30,
         backgroundColor: "gray"
       },
-      loginAndSignUpButtonText: {
+      buttonText: {
         color: "white",
         fontSize: scaledLoginAndSignUpTextFontSize,
         fontWeight: "bold"

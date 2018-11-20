@@ -12,19 +12,19 @@ import {
 } from "react-native";
 import CustomTexInputFieldStyles from "./CustomTextInputFieldStyles";
 export default class CustomTexInputFieldBuilder {
-  constructor(text) {
-    this.inputText = text;
-  }
-
-  createCustomTextInput = () => {
-    const styles = new CustomTexInputFieldStyles(Dimensions.get("window"));
+  createCustomTextInput = (inputText, customStyles) => {
+    const styles =
+      customStyles == null
+        ? new CustomTexInputFieldStyles(Dimensions.get("window"))
+        : customStyles;
     return (
       <TextInput
         style={styles.getStyles().inputContainer}
         underlineColorAndroid="transparent"
-        placeholder={this.inputText}
+        placeholder={inputText}
         placeholderTextColor="#9a73ef"
         autoCapitalize="none"
+        multiline={true}
       />
     );
   };
