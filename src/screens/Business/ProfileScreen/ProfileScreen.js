@@ -10,6 +10,9 @@ import {
   Alert,
   Dimensions
 } from "react-native";
+import { Header } from "react-native-elements";
+import { Icon } from "native-base";
+
 export default class ProfileScreen extends Component {
   static navigationOptions = {
     drawerLabel: "Profile",
@@ -27,14 +30,43 @@ export default class ProfileScreen extends Component {
 
   componentDidMount() {}
 
+  _createHeader() {
+    return (
+      <Header
+        leftComponent={this._createDrawerOpenerButton()}
+        centerComponent={{
+          text: "SYD",
+          style: { color: "#fff", fontSize: 30, fontWeight: "bold" }
+        }}
+        backgroundColor="#c1c6e4"
+      />
+    );
+  }
+
+  _createDrawerOpenerButton() {
+    return (
+      <Icon
+        name="menu"
+        style={{ color: "white" }}
+        onPress={() => this.props.navigation.openDrawer()}
+      />
+    );
+  }
+
   render() {
-    console.log("rendering ProfileScreen");
     return (
       <View style={styles.container}>
-        <Text>
-          Welcome to the ProfileScreen!!!!!!!!!!!!!!!!!!!!!!
-          !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        </Text>
+        {this._createHeader()}
+        <Image
+          source={require("../../../../assets/under-construction.png")}
+          style={{
+            flex: 1,
+            height: 540,
+            width: 350,
+            resizeMode: "contain",
+            alignSelf: "center"
+          }}
+        />
       </View>
     );
   }
@@ -43,8 +75,6 @@ export default class ProfileScreen extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "orange"
+    backgroundColor: "white"
   }
 });
