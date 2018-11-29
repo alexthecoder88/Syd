@@ -15,13 +15,11 @@ import RadioForm, {
   RadioButtonInput,
   RadioButtonLabel
 } from "react-native-simple-radio-button";
+import CustomButtonBuilder from "../../../src/components/CustomComponents/CustomButton/CustomButton";
+
 export default class LoginScreen extends Component {
   constructor(props) {
     super(props);
-    state = {
-      email: "",
-      password: ""
-    };
 
     //Login screen styles
     this.styles = new LoginScreenStyles(this._getScreenDimensions());
@@ -29,10 +27,17 @@ export default class LoginScreen extends Component {
     //Either customer or business.Depends wich radio button is selected.Default is business
     this.clientType = "Business";
 
+    //Data for radio buttons
     this.clientTypeRadioProps = [
       { label: "Business", value: 0 },
       { label: "Customer", value: 1 }
     ];
+
+    this.state = {
+      email: "",
+      password: "",
+      showLoginAsGuestButton: this.clientType == "Customer"
+    };
   }
 
   //Retrieve phone dimensions(width and height)
@@ -40,26 +45,24 @@ export default class LoginScreen extends Component {
 
   //Title section
   _createTitle = () => (
-    <Text style={this.styles.getStyles().titleContainer}>SYD</Text>
+    <Text style={this.styles.getStyles().titleContainer}>SydNails</Text>
   );
 
   //Login and register buttons
   _createButton(buttonText) {
-    const buttonContainterStyles = this.styles.getStyles().buttonContainer;
-    const textStyles = this.styles.getStyles().loginAndSignUpButtonText;
-    return (
-      <TouchableHighlight
-        style={buttonContainterStyles}
-        onPress={() =>
-          buttonText === "LOGIN"
-            ? this._processAuthentication(null)
-            : this._sendToRegistrationScreen()
-        }
-        underlayColor="gray"
-      >
-        <Text style={textStyles}>{buttonText}</Text>
-      </TouchableHighlight>
+    const customButtonBuilder = new CustomButtonBuilder();
+    return customButtonBuilder.createCustomButton(
+      buttonText,
+      "LoginScreen",
+      this
     );
+  }
+
+  //Depending on the state value "showLoginAsGuestButton" , the button will show up or not
+  _createLoginAsGuesButton() {
+    return this.state.showLoginAsGuestButton == true
+      ? this._createButton("LOGIN AS GUEST")
+      : null;
   }
 
   //Authentication input fields
@@ -75,6 +78,7 @@ export default class LoginScreen extends Component {
     );
   }
 
+  //To specify if it's a business or customer who's trying to login
   _createRadioButtons() {
     const radioButtonStyles = this.styles.getStyles().radioButtonsContainer;
     return (
@@ -85,23 +89,27 @@ export default class LoginScreen extends Component {
           radioStyle={{ paddingRight: 20 }}
           selectedButtonColor="white"
           buttonColor="gray"
-          onPress={value => this._setClientType(value)}
+          onPress={value => this._setStateAndClientType(value)}
         />
       </View>
     );
   }
 
-  _setClientType = value => {
+  //Everytime a radio button is clicked , this is executed.
+  _setStateAndClientType = value => {
     this.clientType = value == 0 ? "Business" : "Customer";
-    console.log("client type is: " + this.clientType);
+    this.setState({ showLoginAsGuestButton: this.clientType == "Customer" });
   };
 
-  _processAuthentication = userCredentials => {
-    const testObject = { person: "alex" };
-    this.props.navigation.navigate("BusinessHomeScreen", testObject);
+  processAuthentication = userCredentials => {
+    this.props.navigation.navigate(
+      this.clientType == "Business"
+        ? "BusinessHomeScreen"
+        : "CustomerHomeScreen"
+    );
   };
 
-  _sendToRegistrationScreen = () => {
+  sendToRegistrationScreen = () => {
     const clientType = { clientType: this.clientType };
     this.props.navigation.navigate("Registration", clientType);
   };
@@ -137,6 +145,7 @@ export default class LoginScreen extends Component {
         <View style={loginAndSignUpButtonContainerStyles}>
           {this._createButton("LOGIN")}
           {this._createButton("SIGNUP")}
+          {this._createLoginAsGuesButton()}
         </View>
         {this._createForgetPasswordLink()}
       </View>
