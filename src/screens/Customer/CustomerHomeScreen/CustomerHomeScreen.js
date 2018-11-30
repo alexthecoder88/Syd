@@ -19,6 +19,7 @@ import {
   Agenda,
   LocaleConfig
 } from "react-native-calendars";
+import CustomerHeader from "../../../components/CustomComponents/CustomerHeader/CustomerHeader";
 
 export default class CustomerHomeScreen extends Component {
   static navigationOptions = {
@@ -42,7 +43,8 @@ export default class CustomerHomeScreen extends Component {
   render() {
     return (
       <View style={this.styles.getStyles().container}>
-        <Text>Welcome to CustomerHomeScreen</Text>
+        <CustomerHeader />
+        <Text>Welcome to Home screen !!!</Text>
       </View>
     );
   }

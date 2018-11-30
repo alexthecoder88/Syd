@@ -10,7 +10,7 @@ import {
   Alert,
   Dimensions
 } from "react-native";
-import CustomerSearchScreenStyles from "./CustomerSearchScreenStyles";
+import ProfileScreenStyles from "./ProfileScreenStyles";
 import { Header } from "react-native-elements";
 import { Icon } from "native-base";
 import {
@@ -21,7 +21,7 @@ import {
 } from "react-native-calendars";
 import CustomerHeader from "../../../components/CustomComponents/CustomerHeader/CustomerHeader";
 
-export default class CustomerSearchScreen extends Component {
+export default class ProfileScreen extends Component {
   static navigationOptions = {
     drawerLabel: "Home",
     drawerIcon: ({ tintColor }) => (
@@ -34,7 +34,7 @@ export default class CustomerSearchScreen extends Component {
 
   constructor(props) {
     super(props);
-    this.styles = new CustomerSearchScreenStyles(this._getScreenDimensions());
+    this.styles = new ProfileScreenStyles(this._getScreenDimensions());
   }
 
   //Retrieve phone dimensions(width and height)
@@ -44,7 +44,7 @@ export default class CustomerSearchScreen extends Component {
     return (
       <View style={this.styles.getStyles().container}>
         <CustomerHeader />
-        <Text>Welcome to search screen !!!!</Text>
+        <Text>Welcome to Profile screen !!!</Text>
       </View>
     );
   }
