@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
 
-export default class AppointmentsScreenStyles {
+export default class AppointmentsHistoryScreenStyles {
   constructor(screenDimensions) {
     //The screen dimensions are used to adjust the styles in a responsive way
     this.width = screenDimensions.width;
@@ -19,13 +19,6 @@ export default class AppointmentsScreenStyles {
       container: {
         flex: 1,
         backgroundColor: "white"
-      },
-      serviceName: {
-        color: "#c1c6e4",
-        fontSize: 25,
-        fontWeight: "bold",
-        alignSelf: "center",
-        marginBottom: 10
       }
     });
     return styles;

@@ -19,9 +19,9 @@ export default class CustomTexInputFieldBuilder {
         : customStyles;
     return (
       <TextInput
-        style={styles.getStyles().inputContainer}
+        style={customStyles}
         underlineColorAndroid="transparent"
-        placeholder={inputText}
+        placeholder={inputText != null ? inputText : ""}
         placeholderTextColor="#9a73ef"
         autoCapitalize="none"
         multiline={true}

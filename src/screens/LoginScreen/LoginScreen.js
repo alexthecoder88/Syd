@@ -105,7 +105,7 @@ export default class LoginScreen extends Component {
     this.props.navigation.navigate(
       this.clientType == "Business"
         ? "BusinessHomeScreen"
-        : "CustomerHomeScreen"
+        : "CustomerBottomTabNavigator"
     );
   };
 

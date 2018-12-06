@@ -7,9 +7,9 @@ import {
   DrawerItems,
   NavigationActions
 } from "react-navigation";
-import CustomerHomeScreen from "../../../screens/Customer/CustomerHomeScreen/CustomerHomeScreen";
+import CustomerHomeScreenSwitchNavigator from "../CustomerHomeScreenSwitchNavigator/CustomerHomeScreenSwitchNavigator";
 import CustomerSearchScreen from "../../../screens/Customer/CustomerSearchScreen/CustomerSearchScreen";
-import AppointmentsScreen from "../../../screens/Customer/AppointmentsScreen/AppointmentsScreen";
+import AppointmentsHistoryScreen from "../../../screens/Customer/AppointmentsHistoryScreen/AppointmentsHistoryScreen";
 import FavoritesScreen from "../../../screens/Customer/FavoritesScreen/FavoritesScreen";
 import ProfileScreen from "../../../screens/Customer/ProfileScreen/ProfileScreen";
 import { createBottomTabNavigator, createAppContainer } from "react-navigation";
@@ -19,7 +19,7 @@ import { Icon } from "native-base";
 const customerBottomTabNavigator = createBottomTabNavigator(
   {
     Home: {
-      screen: CustomerHomeScreen,
+      screen: CustomerHomeScreenSwitchNavigator,
       navigationOptions: {
         tabBarIcon: ({ tintColor }) => (
           <Icon name="home" style={{ color: tintColor }} />
@@ -35,7 +35,7 @@ const customerBottomTabNavigator = createBottomTabNavigator(
       }
     },
     Appointments: {
-      screen: AppointmentsScreen,
+      screen: AppointmentsHistoryScreen,
       navigationOptions: {
         tabBarIcon: ({ tintColor }) => (
           <Icon name="book" style={{ color: tintColor }} />

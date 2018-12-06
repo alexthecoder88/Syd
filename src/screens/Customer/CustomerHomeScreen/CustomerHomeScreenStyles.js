@@ -21,6 +21,14 @@ export default class CustomerHomeScreenStyles {
       container: {
         flex: 1,
         backgroundColor: "white"
+      },
+      titleContainer: {
+        marginTop: 25,
+        color: "#c1c6e4",
+        fontSize: 30,
+        marginBottom: 20,
+        fontWeight: "bold",
+        alignSelf: "center"
       }
     });
     return styles;

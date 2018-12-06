@@ -11,7 +11,13 @@ import {
 } from "react-native";
 import CustomButtonStyles from "./CustomButtonStyles";
 export default class CustomButtonBuilder {
-  createCustomButton = (buttonText, screenName, screenInstance) => {
+  createCustomButton = (
+    buttonText,
+    screenName,
+    screenInstance,
+    customStyles,
+    underlayColor
+  ) => {
     const styles = new CustomButtonStyles(Dimensions.get("window"));
     const buttonContainterStyles = styles.getStyles().buttonContainer;
     const textStyles = styles.getStyles().buttonText;
@@ -27,9 +33,11 @@ export default class CustomButtonBuilder {
               : screenInstance.sendToRegistrationScreen();
           }
         }}
-        underlayColor="gray"
+        underlayColor={underlayColor != null ? underlayColor : "gray"}
       >
-        <Text style={textStyles}>{buttonText}</Text>
+        <Text style={customStyles != null ? customStyles : textStyles}>
+          {buttonText}
+        </Text>
       </TouchableHighlight>
     );
   };

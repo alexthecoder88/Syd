@@ -59,11 +59,11 @@ export default class ServiceRegistrationFormScreen extends Component {
   );
 
   //For testing
-  _createCustomTextInput(placeholderTxt, overrideStyles) {
+  _createCustomTextInput(placeholderTxt, customStyles) {
     customTextInputBuilder = new CustomTextInputBuilder();
     return customTextInputBuilder.createCustomTextInput(
       placeholderTxt,
-      overrideStyles ? this.styles : null
+      customStyles != null ? customStyles : null
     );
   }
 
@@ -88,7 +88,7 @@ export default class ServiceRegistrationFormScreen extends Component {
           {this._createCustomTextInput("Name", false)}
           {this._createCustomTextInput(
             "Please describe the service here",
-            true
+            this.styles.getStyles().inputContainer
           )}
           {this._createCustomButton("Save")}
         </View>

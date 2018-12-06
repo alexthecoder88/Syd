@@ -11,7 +11,7 @@ import SettingsScreen from "./src/screens/Business/SettingsScreen/SettingsScreen
 import BusinessHomeScreenDrawerNavigator from "./src/components/Business/BusinessHomeScreenDrawerNavigator/BusinessHomeScreenDrawerNavigator";
 import BusinessRegistrationScreen from "./src/screens/Business/BusinessRegistrationScreen/BusinessRegistrationScreen";
 import Registration from "./src/components/Wrappers/Registration/Registration";
-import CustomerHomeScreen from "./src/components/Customer/CustomerBottomTabNavigator/CustomerBottomTabNavigator";
+import CustomerBottomTabNavigator from "./src/components/Customer/CustomerBottomTabNavigator/CustomerBottomTabNavigator";
 export default class App extends React.Component {
   render() {
     console.log("rending app !!!!!");
@@ -24,7 +24,7 @@ const RootSwitchNavigator = createSwitchNavigator(
     Login: LoginScreen,
     Registration: Registration,
     BusinessHomeScreen: BusinessHomeScreenDrawerNavigator,
-    CustomerHomeScreen: CustomerHomeScreen
+    CustomerBottomTabNavigator: CustomerBottomTabNavigator
   },
   {
     initialRouteName: "Login"
